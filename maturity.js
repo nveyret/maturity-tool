@@ -525,7 +525,21 @@ const { total, stage, pillarSorted, strengths, weaknesses } = computeScores();
 mode = 'results';
 document.getElementById('resultScore').textContent = total + '/100';
 document.getElementById('resultStageLabel').textContent = stage.label;
-document.getElementById('resultStageDesc').textContent = stage.desc;
+document.getElementById('resultStageDesc').innerHTML = `
+  <p>${stage.core}</p>
+
+  <h4>Characteristics</h4>
+  <ul>
+    ${stage.characteristics.map(c => `<li>${c}</li>`).join('')}
+  </ul>
+
+  <h4>Risk profile</h4>
+  <ul>
+    ${stage.risks.map(r => `<li>${r}</li>`).join('')}
+  </ul>
+
+  <blockquote>${stage.mindset}</blockquote>
+`;
 document.getElementById('resultStatText').textContent = stage.stat;
 document.getElementById('resultStatSource').textContent = stage.statSource;
 const barsEl = document.getElementById('pillarBarsContainer');
