@@ -320,36 +320,18 @@ const hsBody = {
   }
 };
 
-  const clayUrl =
-    "https://api.clay.com/v3/sources/webhook/pull-in-data-from-a-webhook-0e5d08f5-279f-4100-b57e-5a5e2eb9f527";
-
-  const clayBody = {
-    email,
-    opt_in,
-    score: total,
-    stage: stage.label,
-    ...percentsRounded,
-    page_url: window.location.href.slice(0, 500),
-    timestamp: new Date().toISOString(),
-  };
-
   try {
-    const [hsRes, clayRes] = await Promise.all([
+    const [hsRes] = await Promise.all([
       fetchWithTimeout(hsUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(hsBody),
       }, 8000),
 
-      fetchWithTimeout(clayUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(clayBody),
-      }, 8000),
+    
     ]);
 
     if (!hsRes.ok) throw new Error("HubSpot submit failed: " + hsRes.status);
-    if (!clayRes.ok) throw new Error("Clay submit failed: " + clayRes.status);
 
   } catch (e) {
     console.warn("Submit error:", e);
