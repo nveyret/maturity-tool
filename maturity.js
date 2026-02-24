@@ -528,12 +528,12 @@ document.getElementById('resultStageLabel').textContent = stage.label;
 document.getElementById('resultStageDesc').innerHTML = `
   <p>${stage.core}</p>
 
-  <h4>Characteristics</h4>
+  <p>Characteristics</p>
   <ul>
     ${stage.characteristics.map(c => `<li>${c}</li>`).join('')}
   </ul>
 
-  <h4>Risk profile</h4>
+  <p>Risk profile</p>
   <ul>
     ${stage.risks.map(r => `<li>${r}</li>`).join('')}
   </ul>
