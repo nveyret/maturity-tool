@@ -277,8 +277,6 @@ const hutk = (document.cookie.match(/(?:^|;\s*)hubspotutk=([^;]+)/)?.[1]) || "";
 const hsUrl =
   "https://api.hsforms.com/submissions/v3/integration/submit/8006059/7555b2f9-be30-46f3-899b-0d0659f84670";
 
-const pillar = (id) => pillarSorted.find(p => p.id === id)?.percent ?? 0;
-
 const hsBody = {
   fields: [
     { name: "email", value: email },
