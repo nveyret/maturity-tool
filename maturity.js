@@ -272,23 +272,53 @@ const percentsRounded = {
   const hsUrl =
     "https://api.hsforms.com/submissions/v3/integration/submit/8006059/7555b2f9-be30-46f3-899b-0d0659f84670";
 
-  const hsBody = {
-    fields: [{ name: "email", value: email }],
-    context: {
-      hutk,
-      pageUri: window.location.href,
-      pageName: document.title || "Performance maturity tool",
-    },
-    legalConsentOptions: {
-      consent: {
-        consentToProcess: true,
-        text: "I agree to receive other communications from Gatling Corp.",
-        communications: [
-          { value: opt_in, subscriptionTypeId: 9999, text: "I agree to receive other communications from Gatling Corp." }
-        ]
-      }
+  const { total, stage, pillarSorted } = computeScores();
+
+const pillar = (id) => pillarSorted.find(p => p.id === id)?.percent ?? 0;
+
+const hsBody = {
+  fields: [
+    { name: "email", value: email },
+
+    // Core assessment
+    { name: "performance_maturity_score", value: total },
+    { name: "performance_maturity_stage", value: stage.label },
+    { name: "performance_maturity_opt_in", value: opt_in },
+
+    // Pillar percents
+    { name: "performance_maturity_process_percent", value: pillar("process") },
+    { name: "performance_maturity_requirements_percent", value: pillar("requirements") },
+    { name: "performance_maturity_environment_percent", value: pillar("environment") },
+    { name: "performance_maturity_automation_percent", value: pillar("automation") },
+    { name: "performance_maturity_metrics_percent", value: pillar("metrics") },
+    { name: "performance_maturity_culture_percent", value: pillar("culture") },
+
+    // Attribution / debug
+    { name: "performance_maturity_page_url", value: window.location.href.slice(0, 500) },
+    { name: "performance_maturity_timestamp", value: new Date().toISOString() },
+    { name: "performance_maturity_last_submission", value: "performance-maturity-analyzer" }
+  ],
+
+  context: {
+    hutk,
+    pageUri: window.location.href,
+    pageName: document.title || "Performance maturity tool",
+  },
+
+  legalConsentOptions: {
+    consent: {
+      consentToProcess: true,
+      text: "I agree to allow Gatling to store and process my personal data.",
+      communications: [
+        {
+          value: opt_in,
+          subscriptionTypeId: 9999,
+          text: "I agree to receive other communications from Gatling Corp."
+        }
+      ]
     }
-  };
+  }
+};
 
   const clayUrl =
     "https://api.clay.com/v3/sources/webhook/pull-in-data-from-a-webhook-0e5d08f5-279f-4100-b57e-5a5e2eb9f527";
