@@ -257,22 +257,25 @@ async function submitGate() {
   btn.disabled = true;
   btn.textContent = 'Loading your results...';
 
-  const { total, stage } = computeScores();
-const { pillarSorted } = computeScores();
+// Compute once (prevents "Identifier 'total' has already been declared")
+const { total, stage, pillarSorted } = computeScores();
+
+// Helper to read a pillar percent safely
+const pillar = (id) => pillarSorted.find(p => p.id === id)?.percent ?? 0;
+
 const percentsRounded = {
-  process_percent: pillarSorted.find(p => p.id === 'process')?.percent ?? 0,
-  requirements_percent: pillarSorted.find(p => p.id === 'requirements')?.percent ?? 0,
-  environment_percent: pillarSorted.find(p => p.id === 'environment')?.percent ?? 0,
-  automation_percent: pillarSorted.find(p => p.id === 'automation')?.percent ?? 0,
-  metrics_percent: pillarSorted.find(p => p.id === 'metrics')?.percent ?? 0,
-  culture_percent: pillarSorted.find(p => p.id === 'culture')?.percent ?? 0,
+  process_percent: pillar('process'),
+  requirements_percent: pillar('requirements'),
+  environment_percent: pillar('environment'),
+  automation_percent: pillar('automation'),
+  metrics_percent: pillar('metrics'),
+  culture_percent: pillar('culture'),
 };
-  const hutk = (document.cookie.match(/(?:^|;\s*)hubspotutk=([^;]+)/)?.[1]) || "";
 
-  const hsUrl =
-    "https://api.hsforms.com/submissions/v3/integration/submit/8006059/7555b2f9-be30-46f3-899b-0d0659f84670";
+const hutk = (document.cookie.match(/(?:^|;\s*)hubspotutk=([^;]+)/)?.[1]) || "";
 
-  const { total, stage, pillarSorted } = computeScores();
+const hsUrl =
+  "https://api.hsforms.com/submissions/v3/integration/submit/8006059/7555b2f9-be30-46f3-899b-0d0659f84670";
 
 const pillar = (id) => pillarSorted.find(p => p.id === id)?.percent ?? 0;
 
