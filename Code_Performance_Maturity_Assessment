@@ -1028,11 +1028,9 @@
           </div>
         </div>
 
-        <p class="result-stage-desc" id="teaserStageDesc"></p>
-
-        <div class="stat-callout" id="teaserStatCallout">
-          <div class="stat-callout-text" id="teaserStatText"></div>
-          <div class="stat-callout-source" id="teaserStatSource"></div>
+       <p class="result-stage-desc">
+        Unlock your detailed breakdown and recommended next steps for this maturity stage.
+        </p>
         </div>
 
         <hr class="divider" />
