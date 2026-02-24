@@ -186,6 +186,13 @@ const PILLAR_COLORS = ['#FF763C','#4557DD','#F861EE','#FF492C','#FF763C','#4557D
 let currentIdx = 0;
 let answers = {};
 let mode = 'intro';
+function fetchWithTimeout(url, options = {}, timeoutMs = 8000) {
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), timeoutMs);
+
+  return fetch(url, { ...options, signal: controller.signal })
+    .finally(() => clearTimeout(timeout));
+}
 function show(id) {
 document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
 document.getElementById('screen-' + id).classList.add('active');
