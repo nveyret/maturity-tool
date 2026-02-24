@@ -533,4 +533,13 @@ function updateLinkedInBtn() {
  const text = 'My Gatling maturity score: ' + total + '/100 — ' + stage.label + '.\n\nFind out your team’s stage → ' + QUIZ_URL;
  const btn = document.getElementById('liBtn');
  if (btn) btn.href = 'https://www.linkedin.com/feed/?shareActive=true&text=' + encodeURIComponent(text);
+window.startQuiz = startQuiz;
+window.resetQuiz = resetQuiz;
+window.goNext = goNext;
+window.goBack = goBack;
+window.skipQuestion = skipQuestion;
+window.showGate = showGate;
+window.showReview = showReview;
+window.submitGate = submitGate;
+window.downloadCard = downloadCard;
   }
