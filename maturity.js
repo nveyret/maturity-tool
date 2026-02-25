@@ -243,36 +243,41 @@ const STAGES = [
   },
 ];
 const ACTIONS = {
-process: [
-'Standardize core user journeys to test every release',
-'Document a lightweight testing playbook',
-'Define coverage: critical flows plus top risk areas',
-],
-requirements: [
-'Set performance targets for key journeys (latency, errors, throughput)',
-'Turn targets into pass-fail assertions — not opinions',
-'Tie requirements to releases and SLA/peak-traffic impact',
-],
-environment: [
-'Make test environments more production-like for critical flows',
-'Stabilize test data so runs are comparable',
-'Adopt baselines to detect regressions confidently',
-],
-automation: [
-'Automate key load tests per schedule or release',
-'Shift testing earlier by adding smaller tests in CI/CD',
-'Create templates so developers can run tests independently',
-],
-metrics: [
-'Store results so you can compare run-to-run trends',
-'Publish dashboards so dev, ops, and leadership align',
-'Correlate load tests with traces and metrics for faster root cause',
-],
-culture: [
-'Define ownership: targets, regressions, and sign-off',
-'Run regular performance reviews (monthly or per milestone)',
-'Enable teams via examples, office hours, and champions',
-],
+  process: [
+    'Introduce a formal performance readiness review before major releases (with quantified risk)',
+    'Define how performance insights trigger decisions (delay, scale, optimize, invest)',
+    'Shift from “testing coverage” to “business risk coverage” per journey',
+  ],
+
+  requirements: [
+    'Translate SLOs into business impact (revenue loss, SLA penalties, customer churn risk)',
+    'Implement performance budgets tied to feature acceptance criteria',
+    'Ensure performance requirements evolve alongside growth and capacity forecasts',
+  ],
+
+  environment: [
+    'Model peak traffic and business events using projected growth scenarios',
+    'Validate infrastructure capacity against forecasted demand, not past averages',
+    'Standardize reproducibility so decisions are based on comparable signals',
+  ],
+
+  automation: [
+    'Implement automated performance gates in CI/CD tied to risk thresholds',
+    'Enable self-service testing with guardrails and standardized templates',
+    'Use automation not just to run tests — but to enforce performance policy',
+  ],
+
+  metrics: [
+    'Create a shared performance scorecard visible to engineering and leadership',
+    'Use trend data to inform roadmap prioritization and scalability investments',
+    'Correlate test results with observability data to drive prevention, not reaction',
+  ],
+
+  culture: [
+    'Clarify ownership of performance risk across product, engineering, and ops',
+    'Run recurring performance reviews focused on decisions and outcomes',
+    'Build cross-team trust by making performance signals transparent and actionable',
+  ],
 };
 const PILLAR_COLORS = ['#FF763C','#4557DD','#F861EE','#FF492C','#FF763C','#4557DD'];
 let currentIdx = 0;
@@ -564,12 +569,12 @@ document.getElementById('resultStageLabel').textContent = stage.label;
 document.getElementById('resultStageDesc').innerHTML = `
   <p>${stage.core}</p>
 
-  <h5>Characteristics</h5>
+  <h6>Characteristics</h5>
   <ul>
     ${stage.characteristics.map(c => `<li>${c}</li>`).join('')}
   </ul>
 
-  <h5>Risk profile</h5>
+  <h6>Risk profile</h5>
   <ul>
     ${stage.risks.map(r => `<li>${r}</li>`).join('')}
   </ul>
@@ -616,11 +621,17 @@ ${strengths.map(s => `<li>${s.label}</li>`).join('')}
 const nextStage = STAGES.find(s => s.id === stage.id + 1);
 const nextBox = document.getElementById('nextStageBox');
 if (nextStage) {
-document.getElementById('nextStageName').textContent = nextStage.label;
-document.getElementById('nextStageDesc').textContent = nextStage.desc;
-nextBox.style.display = 'flex';
+  document.getElementById('nextStageName').textContent = nextStage.label;
+  document.getElementById('nextStageDesc').textContent =
+    'To reach this stage, focus on strengthening governance, forecasting, and decision-driven performance practices.';
+  nextBox.style.display = 'flex';
 } else {
-nextBox.style.display = 'none';
+  // Stage 4 – Intelligent
+  document.getElementById('nextStageName').textContent =
+    'Beyond maturity — Continuous Performance Intelligence';
+  document.getElementById('nextStageDesc').textContent =
+    'At this level, performance is not just tested — it becomes a strategic capability. The next step is operationalizing Continuous Performance Intelligence across teams with governance, forecasting, and automated decision enforcement.';
+  nextBox.style.display = 'flex';
 }
 show('results');
  updateLinkedInBtn();
