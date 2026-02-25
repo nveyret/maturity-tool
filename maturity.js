@@ -25,95 +25,131 @@ const QUESTIONS = [
 { id:'c', label:'Broad coverage, including regressions and key risks', score:2 },
 { id:'d', label:'Risk-based coverage using real usage and outcomes', score:3 },
 ]},
-{ id:'q4', pillar:'requirements', text:'Do you have clear performance requirements?', answers:[
+{ id:'q4', pillar:'process', text:'How visible is performance readiness before major releases?', answers:[
+  { id:'a', label:'Performance is reviewed only after incidents', score:0 },
+  { id:'b', label:'Performance is reviewed before major releases', score:1 },
+  { id:'c', label:'Release readiness includes defined performance checkpoints', score:2 },
+  { id:'d', label:'Leadership reviews quantified performance risk before launch', score:3 },
+]},
+{ id:'q5', pillar:'requirements', text:'Do you have clear performance requirements?', answers:[
 { id:'a', label:'No defined targets', score:0 },
 { id:'b', label:'Basic targets for key flows', score:1 },
 { id:'c', label:'Targets agreed cross-team and tied to releases', score:2 },
 { id:'d', label:'Targets evolve with business goals and capacity plans', score:3 },
 ]},
-{ id:'q5', pillar:'requirements', text:'How do you decide pass or fail?', answers:[
+{ id:'q6', pillar:'requirements', text:'How do you decide pass or fail?', answers:[
 { id:'a', label:'Subjective review of charts and logs', score:0 },
 { id:'b', label:'Basic thresholds for latency and errors', score:1 },
 { id:'c', label:'Automated assertions in CI/CD pipelines', score:2 },
 { id:'d', label:'Assertions plus risk rules and forecasting', score:3 },
 ]},
-{ id:'q6', pillar:'requirements', text:'Who owns performance requirements?', answers:[
+{ id:'q7', pillar:'requirements', text:'Can performance risk be expressed in business terms?', answers:[
+  { id:'a', label:'No clear link to business impact', score:0 },
+  { id:'b', label:'Some SLOs loosely tied to SLAs', score:1 },
+  { id:'c', label:'Thresholds tied to revenue or SLA impact', score:2 },
+  { id:'d', label:'Performance risk is quantified and informs prioritization', score:3 },
+]},
+{ id:'q8', pillar:'requirements', text:'Who owns performance requirements?', answers:[
 { id:'a', label:'No clear owner', score:0 },
 { id:'b', label:'A performance team defines them', score:1 },
 { id:'c', label:'Shared ownership across dev, ops, and platform teams', score:2 },
 { id:'d', label:'Performance is designed in from feature conception', score:3 },
 ]},
-{ id:'q7', pillar:'environment', text:'How close is your test environment to production?', answers:[
+{ id:'q9', pillar:'environment', text:'How close is your test environment to production?', answers:[
 { id:'a', label:'Not representative of production', score:0 },
 { id:'b', label:'Partially representative for key components', score:1 },
 { id:'c', label:'Consistent and reproducible across teams', score:2 },
 { id:'d', label:'Production-like and continuously validated', score:3 },
 ]},
-{ id:'q8', pillar:'environment', text:'Can you reproduce results reliably?', answers:[
+{ id:'q10', pillar:'environment', text:'Do you simulate projected business traffic (e.g., launches or peak events)?', answers:[
+  { id:'a', label:'No traffic modeling beyond basic scenarios', score:0 },
+  { id:'b', label:'Some scenarios reflect expected usage growth', score:1 },
+  { id:'c', label:'Tests model major business events and seasonal peaks', score:2 },
+  { id:'d', label:'Traffic forecasting informs capacity planning and investment', score:3 },
+]},
+{ id:'q11', pillar:'environment', text:'Can you reproduce results reliably?', answers:[
 { id:'a', label:'Results vary; comparisons are hard', score:0 },
 { id:'b', label:'Reproducible for a few known scenarios', score:1 },
 { id:'c', label:'Reproducible with baselines and comparisons', score:2 },
 { id:'d', label:'Reproducible plus long-term trend-driven optimization', score:3 },
 ]},
-{ id:'q9', pillar:'environment', text:'How do you manage test data?', answers:[
+{ id:'q12', pillar:'environment', text:'How do you manage test data?', answers:[
 { id:'a', label:'Manual and ad hoc', score:0 },
 { id:'b', label:'Stable datasets for core scenarios', score:1 },
 { id:'c', label:'Automated data generation or refresh for pipelines', score:2 },
 { id:'d', label:'Data strategy mirrors production patterns and evolves', score:3 },
 ]},
-{ id:'q10', pillar:'automation', text:'How automated is test execution?', answers:[
+{ id:'q13', pillar:'automation', text:'Can performance automatically influence release decisions?', answers:[
+  { id:'a', label:'Results are advisory only', score:0 },
+  { id:'b', label:'Teams review performance before release', score:1 },
+  { id:'c', label:'CI/CD blocks releases on threshold failures', score:2 },
+  { id:'d', label:'Automated governance enforces performance budgets and risk policies', score:3 },
+]},
+{ id:'q14', pillar:'automation', text:'How automated is test execution?', answers:[
 { id:'a', label:'Manual runs', score:0 },
 { id:'b', label:'Repeatable, but manually triggered', score:1 },
 { id:'c', label:'Automated in CI/CD', score:2 },
 { id:'d', label:'Automated and self-service across teams', score:3 },
 ]},
-{ id:'q11', pillar:'automation', text:'When do performance tests run?', answers:[
+{ id:'q15', pillar:'automation', text:'When do performance tests run?', answers:[
 { id:'a', label:'Late, right before release', score:0 },
 { id:'b', label:'Before major releases and critical changes', score:1 },
 { id:'c', label:'During development cycles', score:2 },
 { id:'d', label:'Continuously, plus preemptive capacity validation', score:3 },
 ]},
-{ id:'q12', pillar:'automation', text:'How easy is it for teams to run tests?', answers:[
+{ id:'q16', pillar:'automation', text:'How easy is it for teams to run tests?', answers:[
 { id:'a', label:'Only a few specialists can run them', score:0 },
 { id:'b', label:'Possible with documentation, but specialist-heavy', score:1 },
 { id:'c', label:'Developers can run and review tests reliably', score:2 },
 { id:'d', label:'Templates, guardrails, and coaching enable everyone', score:3 },
 ]},
-{ id:'q13', pillar:'metrics', text:'Do you track metrics over time?', answers:[
+{ id:'q17', pillar:'metrics', text:'Do performance insights influence roadmap decisions?', answers:[
+  { id:'a', label:'Rarely discussed beyond engineering', score:0 },
+  { id:'b', label:'Shared occasionally with stakeholders', score:1 },
+  { id:'c', label:'Used in planning and prioritization', score:2 },
+  { id:'d', label:'Shapes investment, scaling, and roadmap strategy', score:3 },
+]},
+{ id:'q18', pillar:'metrics', text:'Do you track metrics over time?', answers:[
 { id:'a', label:'No history; one-off results', score:0 },
 { id:'b', label:'Basic baselines', score:1 },
 { id:'c', label:'Trend analysis drives decisions', score:2 },
 { id:'d', label:'Forecasting and planning based on trends', score:3 },
 ]},
-{ id:'q14', pillar:'metrics', text:'How do you share results?', answers:[
+{ id:'q19', pillar:'metrics', text:'How do you share results?', answers:[
 { id:'a', label:'Screenshots or one-off summaries', score:0 },
 { id:'b', label:'Shared reports sometimes', score:1 },
 { id:'c', label:'Dashboards used by dev, ops, and leaders', score:2 },
 { id:'d', label:'Results tied to governance and business outcomes', score:3 },
 ]},
-{ id:'q15', pillar:'metrics', text:'Do you correlate test results with observability data?', answers:[
+{ id:'q20', pillar:'metrics', text:'Do you correlate test results with observability data?', answers:[
 { id:'a', label:'No correlation', score:0 },
 { id:'b', label:'Manual correlation sometimes', score:1 },
 { id:'c', label:'Routine correlation with monitoring or tracing', score:2 },
 { id:'d', label:'Automated correlation loops that drive prevention', score:3 },
 ]},
-{ id:'q16', pillar:'culture', text:'How is performance ownership distributed?', answers:[
+{ id:'q21', pillar:'culture', text:'How is performance ownership distributed?', answers:[
 { id:'a', label:'Unclear; mostly reactive firefighting', score:0 },
 { id:'b', label:'A performance team drives it', score:1 },
 { id:'c', label:'Shared responsibility across teams', score:2 },
 { id:'d', label:'A performance-first culture across teams', score:3 },
 ]},
-{ id:'q17', pillar:'culture', text:'How do you improve maturity over time?', answers:[
+{ id:'q22', pillar:'culture', text:'How do you improve maturity over time?', answers:[
 { id:'a', label:'Only after incidents', score:0 },
 { id:'b', label:'Periodic improvements', score:1 },
 { id:'c', label:'Regular review cycles', score:2 },
 { id:'d', label:'Continuous improvement and experimentation', score:3 },
 ]},
-{ id:'q18', pillar:'culture', text:'Do you actively transfer knowledge?', answers:[
+{ id:'q23', pillar:'culture', text:'Do you actively transfer knowledge?', answers:[
 { id:'a', label:'Mostly tribal knowledge', score:0 },
 { id:'b', label:'Some documentation and onboarding', score:1 },
 { id:'c', label:'Regular enablement and sharing', score:2 },
 { id:'d', label:'Mentorship and community contribution', score:3 },
+]},
+{ id:'q24', pillar:'culture', text:'How is performance intelligence used across teams?', answers:[
+  { id:'a', label:'Mostly reactive firefighting', score:0 },
+  { id:'b', label:'Shared within engineering teams', score:1 },
+  { id:'c', label:'Shared across engineering and operations', score:2 },
+  { id:'d', label:'Trusted across product, engineering, and leadership for decision-making', score:3 },
 ]},
 ];
 const STAGES = [
