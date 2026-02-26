@@ -155,9 +155,9 @@ const QUESTIONS = [
 const STAGES = [
   {
     id: 1,
-    label: 'Stage 1 — Reactive',
+    label: 'Stage 1: Reactive',
     min: 0, max: 25,
-    core: 'Performance is a late validation step. You test when something breaks — or right before release.',
+    core: 'Performance is a late validation step. You test when something breaks, or right before release.',
     characteristics: [
       'Load tests run occasionally',
       'No formal SLOs',
@@ -178,7 +178,7 @@ const STAGES = [
   },
   {
     id: 2,
-    label: 'Stage 2 — Structured',
+    label: 'Stage 2: Structured',
     min: 26, max: 50,
     core: 'Performance becomes repeatable. You define targets, run consistent tests, and compare runs — but it’s still mostly engineering-driven.',
     characteristics: [
@@ -194,12 +194,12 @@ const STAGES = [
       'Limited forecasting',
     ],
     mindset: '“Let’s validate this release.”',
-    stat: '57% of QE teams say undefined acceptance criteria is their biggest gap — Stage 2 is a common plateau.',
+    stat: '57% of QE teams say undefined acceptance criteria is their biggest gap, Stage 2 is a common plateau.',
     statSource: 'World Quality Report 2024–25, Capgemini / OpenText',
   },
   {
     id: 3,
-    label: 'Stage 3 — Operational',
+    label: 'Stage 3: Operational',
     min: 51, max: 75,
     core: 'Performance influences decisions. It’s embedded in delivery workflows and starts shaping trade-offs.',
     characteristics: [
@@ -221,7 +221,7 @@ const STAGES = [
   },
   {
     id: 4,
-    label: 'Stage 4 — Intelligent',
+    label: 'Stage 4: Intelligent',
     min: 76, max: 100,
     core: 'Performance becomes a strategic capability. It’s anticipated, forecasted, governed, and aligned with business goals.',
     characteristics: [
@@ -238,7 +238,7 @@ const STAGES = [
       'Performance becomes competitive advantage',
     ],
     mindset: '“How do we optimize performance as a business lever?”',
-    stat: 'Elite performers deploy more frequently and recover far faster — enabled by continuous testing and shared ownership.',
+    stat: 'Elite performers deploy more frequently and recover far faster, enabled by continuous testing and shared ownership.',
     statSource: 'DORA 2023 Accelerate State of DevOps Report',
   },
 ];
@@ -569,16 +569,16 @@ document.getElementById('resultStageLabel').textContent = stage.label;
 document.getElementById('resultStageDesc').innerHTML = `
   <p>${stage.core}</p>
 
-  <h6>Characteristics</h5>
+  <h6>Characteristics</h6>
   <ul>
     ${stage.characteristics.map(c => `<li>${c}</li>`).join('')}
   </ul>
 
-  <h6>Risk profile</h5>
+  <h6>Risk profile</h6>
   <ul>
     ${stage.risks.map(r => `<li>${r}</li>`).join('')}
   </ul>
-
+  <h6>Mindset</h6>
   <blockquote>${stage.mindset}</blockquote>
 `;
 document.getElementById('resultStatText').textContent = stage.stat;
@@ -630,7 +630,7 @@ if (nextStage) {
   document.getElementById('nextStageName').textContent =
     'Beyond maturity — Continuous Performance Intelligence';
   document.getElementById('nextStageDesc').textContent =
-    'At this level, performance is not just tested — it becomes a strategic capability. The next step is operationalizing Continuous Performance Intelligence across teams with governance, forecasting, and automated decision enforcement.';
+    'At this level, performance becomes a strategic capability. The next step is operationalizing Continuous Performance Intelligence across teams with governance, forecasting, and automated decision enforcement.';
   nextBox.style.display = 'flex';
 }
 show('results');
