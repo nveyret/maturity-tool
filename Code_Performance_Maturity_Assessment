@@ -896,9 +896,81 @@
         background: var(--white);
         color: var(--text);
       }
+      /* Gate (teaser) pillar breakdown — styles expected by maturity.js */
+.gate-teaser-bar-row {
+  margin-bottom: 0.875rem;
+}
+
+.gate-teaser-bar-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.gate-teaser-bar-track {
+  width: 100%;
+  height: 4px;
+  background: var(--grey-2);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.gate-teaser-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+}
+/* 👇 ADD IT HERE, AT THE END */
+
+    }
+    .stage-block-title {
+  font-weight: 700;
+  font-size: 0.9rem;
+  margin: 12px 0 6px;
+}
+
+.stage-block-list {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.stage-block-list li {
+  margin: 6px 0;
+}
+
+.stage-mindset {
+  margin: 0;
+  font-style: italic;
+  opacity: 0.9;
+}
+
+.stage-core {
+  margin: 0 0 10px;
+  opacity: 0.9;
+}
+    #resultStageDesc h6 {
+      margin-top: 2rem;
+      margin-bottom: 0.4rem;
+      font-weight: 600;
+    }
+
+    #resultStageDesc ul {
+      margin: 0 0 1rem 1.2rem;
+    }
+
+    #resultStageDesc li {
+      margin-bottom: 0.3rem;
+    }
+
+    #resultStageDesc blockquote {
+      margin-top: 1rem;
+      padding-left: 1rem;
+      border-left: 3px solid var(--blue);
+      font-style: italic;
+      opacity: 0.9;
+ 
     </style>
   </head>
-
   <body>
     <div class="shell">
       <div class="top-bar">
@@ -911,7 +983,7 @@
 
       <div class="progress-wrap" id="progressWrap">
         <div class="progress-meta">
-          <span id="progressLabel">Question 1 of 18</span>
+          <span id="progressLabel">Question 1 of 24</span>
           <span id="progressPct">0%</span>
         </div>
         <div class="progress-track">
@@ -923,23 +995,23 @@
       <div class="screen active" id="screen-intro">
         <div class="intro-badge">
           <div class="intro-badge-dot"></div>
-          Free assessment - 18 questions
+          Free assessment - 24 questions
         </div>
         <h1 class="intro-title">
-          What's your performance<br />
-          testing maturity stage?
+          How mature is your performance strategy?
         </h1>
         <p class="intro-sub">
-          Answer 18 questions across 6 pillars to find your maturity stage and
-          action plan.
+          Evaluate your organization across 6 core performance pillars to discover your stage and what it takes to reach Continuous Performance Intelligence.
         </p>
-
+        <p class="intro-sub">
+          Gatling’s Performance Maturity Framework defines four stages of organizational evolution — from reactive to intelligent testing.
+        </p>
         <div class="intro-meta">
           <div class="meta-chip">
-            <span class="meta-chip-icon">&#9201;</span> ~3 minutes
+            <span class="meta-chip-icon">&#9201;</span> ~4 minutes
           </div>
           <div class="meta-chip">
-            <span class="meta-chip-icon">&#9633;</span> 18 questions
+            <span class="meta-chip-icon">&#9633;</span> 24 questions
           </div>
           <div class="meta-chip">
             <span class="meta-chip-icon">&#9672;</span> 6 pillars
@@ -960,7 +1032,7 @@
 
         <div class="intro-actions">
           <button class="btn-primary" onclick="startQuiz()">
-            Start the assessment &#8594;
+            Start the assessment
           </button>
         </div>
       </div>
@@ -972,7 +1044,7 @@
             <div class="pillar-accent"></div>
             <span id="pillarLabel">Process</span>
           </div>
-          <span class="q-counter" id="qCounter">1 / 18</span>
+          <span class="q-counter" id="qCounter">1 / 24</span>
         </div>
 
         <div class="q-text" id="qText"></div>
@@ -1010,7 +1082,7 @@
         <div class="q-actions">
           <button class="btn-secondary" onclick="resetQuiz()">Reset</button>
           <button class="btn-primary" onclick="showGate()">
-            See my results &#8594;
+            See my results
           </button>
         </div>
       </div>
@@ -1028,9 +1100,11 @@
           </div>
         </div>
 
-       <p class="result-stage-desc">
-        Unlock your detailed breakdown and recommended next steps for this maturity stage.
-        </p>
+        <p class="result-stage-desc" id="teaserStageDesc"></p>
+
+        <div class="stat-callout" id="teaserStatCallout">
+          <div class="stat-callout-text" id="teaserStatText"></div>
+          <div class="stat-callout-source" id="teaserStatSource"></div>
         </div>
 
         <hr class="divider" />
@@ -1040,12 +1114,12 @@
           <div id="teaserBars"></div>
         </div>
 
-        <div class="gate-card">
+        <div class="gate-card" style="margin-top: 1.5rem">
           <div class="gate-eyebrow">Turn Insight Into Action</div>
-          <div class="gate-title">Your roadmap tells you what to do next.</div>
+          <div class="gate-title">Your maturity stage is a starting point, not the destination.
+          </div>
           <p class="gate-sub">
-            Unlock your personalized recommendations and concrete next steps
-            tailored to your maturity stage.
+            Unlock your personalized roadmap to evolve from reactive testing to performance intelligence with concrete next steps for your stage.
           </p>
 
           <div class="gate-fields">
@@ -1100,13 +1174,12 @@
           </div>
         </div>
 
-        <p class="result-stage-desc" id="resultStageDesc"></p>
-
+        <div class="result-stage-desc" id="resultStageDesc"></div>
+				<div class="stage-details" id="stageDetails"></div>
         <div class="stat-callout" id="resultStatCallout">
           <div class="stat-callout-text" id="resultStatText"></div>
           <div class="stat-callout-source" id="resultStatSource"></div>
         </div>
-
         <hr class="divider" />
 
         <div class="result-grid">
@@ -1133,7 +1206,7 @@
             rel="noopener"
             class="next-stage-cta"
           >
-            Book a demo &#8594;
+            Explore how to go beyond your maturity stage
           </a>
         </div>
 
@@ -1162,7 +1235,7 @@
         </div>
 
         <div class="quiz-footer">
-          TMMi · DORA 2023 · World Quality Report 2024–25 · New Relic · Dynatrace
+          Sources: TMMi · DORA 2023 · World Quality Report 2024–25 · New Relic · Dynatrace
           2025
         </div>
       </div>
@@ -1174,9 +1247,6 @@
       height="630"
       style="position: fixed; left: -9999px; top: 0; pointer-events: none"
     ></canvas>
-
-    <!-- Engine: Nathan’s file (keep it as the source of truth) -->
-    <script src="./maturity.js" defer></script>
 
     <!-- Patch layer: fills teaserStageDesc / teaserStatText / teaserStatSource after Nathan’s showGate() -->
     <script>
@@ -1213,3 +1283,4 @@
     </script>
   </body>
 </html>
+<script src="https://nveyret.github.io/maturity-tool/maturity.js?v=5" defer></script>
