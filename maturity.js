@@ -216,8 +216,8 @@ const STAGES = [
       'Data-driven iteration',
     ],
     mindset: '“What decision should we take based on this data?”',
-    stat: 'Teams that connect performance signals to operational telemetry detect regressions faster and reduce escalations.',
-    statSource: 'New Relic Observability Forecast 2023',
+    stat: 'High-performing engineering teams deploy 208× more frequently and recover 2,604× faster — enabled by automation and fast feedback loops.', 
+    statSource: 'DORA 2023 Accelerate State of DevOps Report',
   },
   {
     id: 4,
