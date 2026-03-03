@@ -667,6 +667,15 @@ function updateLinkedInBtn() {
  const btn = document.getElementById('liBtn');
  if (btn) btn.href = 'https://www.linkedin.com/feed/?shareActive=true&text=' + encodeURIComponent(text);
 }
+document.addEventListener('DOMContentLoaded', function() {
+  const btn = document.getElementById('seeResultsBtn');
+  if (btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      showGate();
+    });
+  }
+});
 window.startQuiz = startQuiz;
 window.resetQuiz = resetQuiz;
 window.goNext = goNext;
