@@ -291,8 +291,15 @@ function fetchWithTimeout(url, options = {}, timeoutMs = 8000) {
     .finally(() => clearTimeout(timeout));
 }
 function show(id) {
-document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-document.getElementById('screen-' + id).classList.add('active');
+  document.querySelectorAll('.screen')
+    .forEach(s => s.classList.remove('active'));
+
+  document.getElementById('screen-' + id)
+    .classList.add('active');
+
+  // 👇 Force scroll to top of tool
+  document.getElementById('maturityTop')
+    ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 function startQuiz() {
 currentIdx = 0;
