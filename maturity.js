@@ -289,7 +289,14 @@ function fetchWithTimeout(url, options = {}, timeoutMs = 8000) {
 
   return fetch(url, { ...options, signal: controller.signal })
     .finally(() => clearTimeout(timeout));
+function scrollPageToToolTop() {
+  const el = document.getElementById('maturityTop');
+  if (!el) return;
+
+  const y = el.getBoundingClientRect().top + window.pageYOffset;
+  window.scrollTo(0, Math.max(0, y - 20)); // adjust -20 if you have a sticky header
 }
+
 function show(id) {
   document.querySelectorAll('.screen')
     .forEach(s => s.classList.remove('active'));
@@ -297,13 +304,8 @@ function show(id) {
   document.getElementById('screen-' + id)
     ?.classList.add('active');
 
-  // Only force-scroll on major screens (not each question)
-  const shouldScroll = (id === 'intro' || id === 'gate' || id === 'results');
-
-  if (shouldScroll) {
-    document.getElementById('maturityTop')
-      ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
+  // Scroll on every screen change (including question -> question)
+  requestAnimationFrame(scrollPageToToolTop);
 }
 function startQuiz() {
 currentIdx = 0;
