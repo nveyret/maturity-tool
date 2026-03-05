@@ -793,13 +793,13 @@ function buildShareCard(){
   x.fillRect(LM, 462, 160, 3);
 
   // "WHAT THIS MEANS" label  ← boosted
-  const wg=x.createLinearGradient(LM,500,LM+200,500);
+  const wg=x.createLinearGradient(LM,600,LM+200,600);
   wg.addColorStop(0,'#4557DD');
   wg.addColorStop(.5,'#F861EE');
   wg.addColorStop(1,'#FF763C');
   x.font='800 16px Inter,Arial,sans-serif';
   x.fillStyle=wg;
-  x.fillText('WHAT THIS MEANS', LM, 500);
+  x.fillText('WHAT THIS MEANS', LM, 600);
 
   // Bullet points  ← boosted
   sd.b.forEach((b,i)=>{
