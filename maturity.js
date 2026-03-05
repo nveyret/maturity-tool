@@ -295,11 +295,15 @@ function show(id) {
     .forEach(s => s.classList.remove('active'));
 
   document.getElementById('screen-' + id)
-    .classList.add('active');
+    ?.classList.add('active');
 
-  // 👇 Force scroll to top of tool
-  document.getElementById('maturityTop')
-    ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // Only force-scroll on major screens (not each question)
+  const shouldScroll = (id === 'intro' || id === 'gate' || id === 'results');
+
+  if (shouldScroll) {
+    document.getElementById('maturityTop')
+      ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 }
 function startQuiz() {
 currentIdx = 0;
