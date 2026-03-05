@@ -289,6 +289,7 @@ function fetchWithTimeout(url, options = {}, timeoutMs = 8000) {
 
   return fetch(url, { ...options, signal: controller.signal })
     .finally(() => clearTimeout(timeout));
+ } 
 function scrollPageToToolTop() {
   const el = document.getElementById('maturityTop');
   if (!el) return;
