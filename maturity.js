@@ -673,8 +673,259 @@ goNext();
 });
 const QUIZ_URL = 'https://gatling.io/performance-maturity-analyzer';
 const SC_COLORS = ['#FF763C','#4557DD','#F861EE','#FF492C','#FF763C','#4557DD'];
-function buildShareCard(){const{total,stage}=computeScores();const si=stage.id-1;const cv=document.getElementById('shareCard');const x=cv.getContext('2d');const W=1200,H=630;x.clearRect(0,0,W,H);const SD=[{n:'1',l:'Stage 1 — Reactive',t1:'Performance is reactive.',t2:'You test to avoid failure.',b:['Testing happens late or after incidents','No formal SLOs or trend tracking','High operational risk exposure']},{n:'2',l:'Stage 2 — Structured',t1:'Performance is repeatable.',t2:'You validate before release.',b:['Defined SLOs for key flows','Baselines and basic automation','More predictability, less chaos']},{n:'3',l:'Stage 3 — Operational',t1:'Performance drives decisions.',t2:'Data shapes trade-offs.',b:['CI/CD integration with SLOs','Trend-based regression detection','Shared ownership across teams']},{n:'4',l:'Stage 4 — Intelligent',t1:'Performance is strategic.',t2:'It becomes a business lever.',b:['Performance budgets tied to KPIs','Capacity forecasting & governance','Risk anticipated, not discovered']}];const ST=[['Reactive','Late validation'],['Structured','Repeatable testing'],['Operational','Decision-driven'],['Intelligent','Strategic capability']];const sd=SD[si];const bg=x.createLinearGradient(0,0,518,988);bg.addColorStop(0,'#0A0A0F');bg.addColorStop(1,'#0F0F1F');x.fillStyle=bg;x.fillRect(0,0,W,H);const gl=x.createRadialGradient(900,315,0,900,315,720);gl.addColorStop(0,'rgba(69,87,221,.25)');gl.addColorStop(1,'rgba(69,87,221,0)');x.fillStyle=gl;x.fillRect(0,0,W,H);const ng=x.createLinearGradient(235,359,525,359);ng.addColorStop(0,'#4557DD');ng.addColorStop(.5,'#F861EE');ng.addColorStop(1,'#FF763C');x.font='900 480px Arial Black,Arial,sans-serif';x.textAlign='left';x.textBaseline='alphabetic';x.fillStyle=ng;x.globalAlpha=.9;x.fillText(sd.n,220,550);x.globalAlpha=1;const dg=x.createLinearGradient(760,0,760,630);dg.addColorStop(0,'rgba(255,255,255,0)');dg.addColorStop(.2,'rgba(255,255,255,.1)');dg.addColorStop(.8,'rgba(255,255,255,.1)');dg.addColorStop(1,'rgba(255,255,255,0)');x.strokeStyle=dg;x.lineWidth=1;x.beginPath();x.moveTo(760.5,0);x.lineTo(760.5,630);x.stroke();x.fillStyle='white';const LP=["M161.8 44H155.3V77H161.8V44Z","M148 47.3H141.4V54H137.1V60.7H141.4V70.4C141.4 70.5 141.4 70.6 141.4 70.7H141.4C141.4 74.1 144.2 77 147.7 77H153.6V70.7H148V60.7H153.6V54H148V47.3H148Z","M170 54H163.5V77H170V54Z","M170 44H163.5V50.6H170V44Z","M129 55C127.3 54.1 125.4 53.6 123.3 53.6C116.8 53.6 111.5 58.9 111.5 65.5C111.5 72.1 116.8 77.4 123.3 77.4C125.4 77.4 127.3 76.9 129 76V77H135.5V54H129V55V55ZM123.3 71.2C120.2 71.2 117.7 68.6 117.7 65.5C117.7 62.4 120.2 59.8 123.3 59.8C126.4 59.8 129 62.4 129 65.5C129 68.6 126.4 71.2 123.3 71.2Z","M178.2 54C174.6 54 171.7 57 171.7 60.6V77H178.2V60.6H184.8V54H178.2V54V54Z","M191.3 60.6H184.8V76.9H191.3V60.6Z","M210.5 55C208.8 54.1 206.9 53.6 204.9 53.6C198.3 53.6 193 58.9 193 65.5C193 72.1 198.3 77.4 204.9 77.4C206.9 77.4 208.8 76.9 210.5 76V80.7H217V54H210.5V55V55ZM204.9 71.2C201.8 71.2 199.2 68.6 199.2 65.5C199.2 62.4 201.8 59.8 204.9 59.8C208 59.8 210.5 62.4 210.5 65.5C210.5 68.6 208 71.2 204.9 71.2Z","M103.1 57.6H93.2V63.8H103.1V57.6Z","M109.8 63.8V77H103.6V73.8C100.7 76.1 97.1 77.4 93.2 77.4H76.6C71.4 77.4 66.7 75 63.6 71.2H80.2C78.6 69.1 77.4 66.6 76.9 63.8H60.3C60.1 62.8 60 61.8 60 60.7C60 59.6 60.1 58.6 60.3 57.6H76.9C77.4 54.8 78.6 52.4 80.2 50.3H63.6C66.7 46.4 71.4 44 76.6 44H93.2C97.8 44 101.9 45.9 104.9 48.9L100.5 53.3C98.7 51.4 96.1 50.3 93.2 50.3C92.1 50.3 91 50.4 90 50.8C86.8 51.8 84.3 54.4 83.3 57.6C83 58.6 82.8 59.6 82.8 60.7C82.8 61.8 83 62.9 83.3 63.8C84.3 67.1 86.8 69.6 90 70.6C91 71 92.1 71.2 93.2 71.2C97.8 71.2 101.8 68.1 103.1 63.8H109.8V63.8Z","M210.5 87H199.2V80.7H210.5V87Z"];LP.forEach(d=>{x.fill(new Path2D(d))});x.font='700 11px Inter,Arial,sans-serif';x.fillStyle='rgba(255,255,255,.35)';x.textAlign='left';x.textBaseline='alphabetic';x.fillText('PERFORMANCE MATURITY',60,184);x.font='900 36px Arial Black,Arial,sans-serif';x.fillStyle='white';x.fillText(sd.l,60,262);const ag=x.createLinearGradient(60,420,160,420);ag.addColorStop(0,'#4557DD');ag.addColorStop(.5,'#F861EE');ag.addColorStop(1,'#FF763C');x.fillStyle=ag;x.fillRect(60,419,100,2);x.font='700 22px Inter,Arial,sans-serif';x.fillStyle='rgba(255,255,255,.9)';x.fillText(sd.t1,60,330);x.fillText(sd.t2,60,358);const wg=x.createLinearGradient(60,412,160,412);wg.addColorStop(0,'#4557DD');wg.addColorStop(.5,'#F861EE');wg.addColorStop(1,'#FF763C');x.font='700 10px Inter,Arial,sans-serif';x.fillStyle=wg;x.fillText('WHAT THIS MEANS',60,412);sd.b.forEach((b,i)=>{const y=444+i*36;x.beginPath();x.arc(63,y-5,3.5,0,Math.PI*2);x.fillStyle='#4557DD';x.fill();x.font='500 16px Inter,Arial,sans-serif';x.fillStyle='rgba(255,255,255,.75)';x.textAlign='left';x.textBaseline='alphabetic';x.fillText(b,80,y)});x.font='700 10px Inter,Arial,sans-serif';x.fillStyle='rgba(255,255,255,.35)';x.fillText('YOUR STAGE',822,164);const SY=[200,296,380,466];SY.forEach((y,i)=>{const act=i===si;if(i<3){x.beginPath();x.moveTo(820,y+15);x.lineTo(820,SY[i+1]-15);x.setLineDash([3,3]);x.strokeStyle='rgba(255,255,255,.15)';x.lineWidth=1.5;x.stroke();x.setLineDash([])}if(act){const dg2=x.createRadialGradient(820,y,0,820,y,14);dg2.addColorStop(0,'#4557DD');dg2.addColorStop(1,'#6C4DD8');x.beginPath();x.arc(820,y,14,0,Math.PI*2);x.fillStyle=dg2;x.fill();x.beginPath();x.arc(820,y,14.75,0,Math.PI*2);x.strokeStyle='#F861EE';x.lineWidth=1.5;x.stroke();x.font='800 11px Inter,Arial,sans-serif';x.fillStyle='white';x.textAlign='center';x.textBaseline='middle';x.fillText(i+1,820,y);x.textAlign='left';x.textBaseline='alphabetic';x.font='800 16px Inter,Arial,sans-serif';x.fillStyle='white';x.fillText(ST[i][0],860,y-2);x.font='400 12px Inter,Arial,sans-serif';x.fillStyle='rgba(255,255,255,.6)';x.fillText(ST[i][1],860,y+16)}else{x.beginPath();x.arc(820,y,10,0,Math.PI*2);x.strokeStyle='rgba(255,255,255,.2)';x.lineWidth=1.5;x.stroke();x.font='400 10px Inter,Arial,sans-serif';x.fillStyle='rgba(255,255,255,.3)';x.textAlign='center';x.textBaseline='middle';x.fillText(i+1,820,y);x.textAlign='left';x.textBaseline='alphabetic';x.font='400 14px Inter,Arial,sans-serif';x.fillStyle='rgba(255,255,255,.3)';x.fillText(ST[i][0],860,y-2);x.font='400 11px Inter,Arial,sans-serif';x.fillStyle='rgba(255,255,255,.2)';x.fillText(ST[i][1],860,y+15)}});x.font='700 11px Inter,Arial,sans-serif';x.fillStyle='rgba(255,255,255,.6)';x.textAlign='left';x.textBaseline='alphabetic';x.fillText('SEE YOUR MATURITY STAGE AT',782,571);const ug=x.createLinearGradient(782,594,1156,594);ug.addColorStop(0,'#4557DD');ug.addColorStop(.5,'#F861EE');ug.addColorStop(1,'#FF763C');x.font='400 11px Inter,Arial,sans-serif';x.fillStyle=ug;x.fillText('GATLING.IO/PERFORMANCE-MATURITY-ANALYZER',782,592)}
-function downloadCard(){buildShareCard();const cv=document.getElementById('shareCard');const a=document.createElement('a');a.download='maturity-score.png';a.href=cv.toDataURL('image/png');a.click()}
+function buildShareCard(){
+  const{total,stage}=computeScores();
+  const si=stage.id-1;
+  const cv=document.getElementById('shareCard');
+  const x=cv.getContext('2d');
+
+  // ── Canvas size ──────────────────────────────────────────────
+  const W=1920, H=1005;
+  cv.width=W; cv.height=H;
+  x.clearRect(0,0,W,H);
+
+  // ── Stage data ───────────────────────────────────────────────
+  const SD=[
+    {n:'1',l:'Stage 1 — Reactive',  t1:'Performance is reactive.', t2:'You test to avoid failure.',
+     b:['Testing happens late or after incidents','No formal SLOs or trend tracking','High operational risk exposure']},
+    {n:'2',l:'Stage 2 — Structured',t1:'Performance is repeatable.',t2:'You validate before release.',
+     b:['Defined SLOs for key flows','Baselines and basic automation','More predictability, less chaos']},
+    {n:'3',l:'Stage 3 — Operational',t1:'Performance drives decisions.',t2:'Data shapes trade-offs.',
+     b:['CI/CD integration with SLOs','Trend-based regression detection','Shared ownership across teams']},
+    {n:'4',l:'Stage 4 — Intelligent',t1:'Performance is strategic.',t2:'It becomes a business lever.',
+     b:['Performance budgets tied to KPIs','Capacity forecasting & governance','Risk anticipated, not discovered']}
+  ];
+  const ST=[
+    ['Reactive','Late validation'],
+    ['Structured','Repeatable testing'],
+    ['Operational','Decision-driven'],
+    ['Intelligent','Strategic capability']
+  ];
+  const sd=SD[si];
+
+  // ── Background ───────────────────────────────────────────────
+  const bg=x.createLinearGradient(0,0,829,1581);
+  bg.addColorStop(0,'#0A0A0F');
+  bg.addColorStop(1,'#0F0F1F');
+  x.fillStyle=bg;
+  x.fillRect(0,0,W,H);
+
+  const gl=x.createRadialGradient(1440,504,0,1440,504,1152);
+  gl.addColorStop(0,'rgba(69,87,221,.25)');
+  gl.addColorStop(1,'rgba(69,87,221,0)');
+  x.fillStyle=gl;
+  x.fillRect(0,0,W,H);
+
+  // ── Big stage number (left panel) ────────────────────────────
+  const ng=x.createLinearGradient(376,574,840,574);
+  ng.addColorStop(0,'#4557DD');
+  ng.addColorStop(.5,'#F861EE');
+  ng.addColorStop(1,'#FF763C');
+  x.font='900 768px Arial Black,Arial,sans-serif';
+  x.textAlign='left';
+  x.textBaseline='alphabetic';
+  x.fillStyle=ng;
+  x.globalAlpha=.9;
+  x.fillText(sd.n,352,880);
+  x.globalAlpha=1;
+
+  // ── Divider line ─────────────────────────────────────────────
+  const divX = 1216;
+  const dg=x.createLinearGradient(divX,0,divX,H);
+  dg.addColorStop(0,'rgba(255,255,255,0)');
+  dg.addColorStop(.2,'rgba(255,255,255,.1)');
+  dg.addColorStop(.8,'rgba(255,255,255,.1)');
+  dg.addColorStop(1,'rgba(255,255,255,0)');
+  x.strokeStyle=dg;
+  x.lineWidth=1;
+  x.beginPath();
+  x.moveTo(divX+.5,0);
+  x.lineTo(divX+.5,H);
+  x.stroke();
+
+  // ── Gatling logo (scaled paths × 1.6) ───────────────────────
+  x.fillStyle='white';
+  x.save();
+  x.scale(1.6,1.6);
+  const LP=[
+    "M161.8 44H155.3V77H161.8V44Z",
+    "M148 47.3H141.4V54H137.1V60.7H141.4V70.4C141.4 70.5 141.4 70.6 141.4 70.7H141.4C141.4 74.1 144.2 77 147.7 77H153.6V70.7H148V60.7H153.6V54H148V47.3H148Z",
+    "M170 54H163.5V77H170V54Z",
+    "M170 44H163.5V50.6H170V44Z",
+    "M129 55C127.3 54.1 125.4 53.6 123.3 53.6C116.8 53.6 111.5 58.9 111.5 65.5C111.5 72.1 116.8 77.4 123.3 77.4C125.4 77.4 127.3 76.9 129 76V77H135.5V54H129V55V55ZM123.3 71.2C120.2 71.2 117.7 68.6 117.7 65.5C117.7 62.4 120.2 59.8 123.3 59.8C126.4 59.8 129 62.4 129 65.5C129 68.6 126.4 71.2 123.3 71.2Z",
+    "M178.2 54C174.6 54 171.7 57 171.7 60.6V77H178.2V60.6H184.8V54H178.2V54V54Z",
+    "M191.3 60.6H184.8V76.9H191.3V60.6Z",
+    "M210.5 55C208.8 54.1 206.9 53.6 204.9 53.6C198.3 53.6 193 58.9 193 65.5C193 72.1 198.3 77.4 204.9 77.4C206.9 77.4 208.8 76.9 210.5 76V80.7H217V54H210.5V55V55ZM204.9 71.2C201.8 71.2 199.2 68.6 199.2 65.5C199.2 62.4 201.8 59.8 204.9 59.8C208 59.8 210.5 62.4 210.5 65.5C210.5 68.6 208 71.2 204.9 71.2Z",
+    "M103.1 57.6H93.2V63.8H103.1V57.6Z",
+    "M109.8 63.8V77H103.6V73.8C100.7 76.1 97.1 77.4 93.2 77.4H76.6C71.4 77.4 66.7 75 63.6 71.2H80.2C78.6 69.1 77.4 66.6 76.9 63.8H60.3C60.1 62.8 60 61.8 60 60.7C60 59.6 60.1 58.6 60.3 57.6H76.9C77.4 54.8 78.6 52.4 80.2 50.3H63.6C66.7 46.4 71.4 44 76.6 44H93.2C97.8 44 101.9 45.9 104.9 48.9L100.5 53.3C98.7 51.4 96.1 50.3 93.2 50.3C92.1 50.3 91 50.4 90 50.8C86.8 51.8 84.3 54.4 83.3 57.6C83 58.6 82.8 59.6 82.8 60.7C82.8 61.8 83 62.9 83.3 63.8C84.3 67.1 86.8 69.6 90 70.6C91 71 92.1 71.2 93.2 71.2C97.8 71.2 101.8 68.1 103.1 63.8H109.8V63.8Z",
+    "M210.5 87H199.2V80.7H210.5V87Z"
+  ];
+  LP.forEach(d=>{x.fill(new Path2D(d))});
+  x.restore();
+
+  // ── LEFT PANEL TEXT ──────────────────────────────────────────
+  const LM = 96; // left margin
+
+  // "PERFORMANCE MATURITY" label
+  x.font='700 18px Inter,Arial,sans-serif';
+  x.fillStyle='rgba(255,255,255,.35)';
+  x.textAlign='left';
+  x.textBaseline='alphabetic';
+  x.fillText('PERFORMANCE MATURITY', LM, 210);
+
+  // Stage title (keep original feel, just scale)
+  x.font='900 58px Arial Black,Arial,sans-serif';
+  x.fillStyle='white';
+  x.fillText(sd.l, LM, 310);
+
+  // Taglines
+  x.font='700 34px Inter,Arial,sans-serif';
+  x.fillStyle='rgba(255,255,255,.9)';
+  x.fillText(sd.t1, LM, 390);
+  x.fillText(sd.t2, LM, 434);
+
+  // Gradient rule under taglines
+  const ag=x.createLinearGradient(LM,464,LM+160,464);
+  ag.addColorStop(0,'#4557DD');
+  ag.addColorStop(.5,'#F861EE');
+  ag.addColorStop(1,'#FF763C');
+  x.fillStyle=ag;
+  x.fillRect(LM, 462, 160, 3);
+
+  // "WHAT THIS MEANS" label  ← boosted
+  const wg=x.createLinearGradient(LM,500,LM+200,500);
+  wg.addColorStop(0,'#4557DD');
+  wg.addColorStop(.5,'#F861EE');
+  wg.addColorStop(1,'#FF763C');
+  x.font='800 16px Inter,Arial,sans-serif';
+  x.fillStyle=wg;
+  x.fillText('WHAT THIS MEANS', LM, 500);
+
+  // Bullet points  ← boosted
+  sd.b.forEach((b,i)=>{
+    const y = 538 + i*52;
+    x.beginPath();
+    x.arc(LM+7, y-8, 5.5, 0, Math.PI*2);
+    x.fillStyle='#4557DD';
+    x.fill();
+    x.font='500 26px Inter,Arial,sans-serif';
+    x.fillStyle='rgba(255,255,255,.80)';
+    x.textAlign='left';
+    x.textBaseline='alphabetic';
+    x.fillText(b, LM+24, y);
+  });
+
+  // ── RIGHT PANEL — YOUR STAGE ─────────────────────────────────
+  const RM = 1264; // right panel left edge
+
+  // "YOUR STAGE" label  ← boosted
+  x.font='800 18px Inter,Arial,sans-serif';
+  x.fillStyle='rgba(255,255,255,.45)';
+  x.textAlign='left';
+  x.textBaseline='alphabetic';
+  x.fillText('YOUR STAGE', RM, 170);
+
+  // Stage nodes — spread evenly in right panel
+  const nodeX = RM + 28;
+  const SY = [220, 390, 555, 718];
+
+  SY.forEach((y,i)=>{
+    const act = i===si;
+
+    // Connector line between nodes
+    if(i<3){
+      x.beginPath();
+      x.moveTo(nodeX, y+20);
+      x.lineTo(nodeX, SY[i+1]-20);
+      x.setLineDash([4,4]);
+      x.strokeStyle='rgba(255,255,255,.15)';
+      x.lineWidth=2;
+      x.stroke();
+      x.setLineDash([]);
+    }
+
+    if(act){
+      // Active node — filled circle with glow ring
+      const dg2=x.createRadialGradient(nodeX,y,0,nodeX,y,22);
+      dg2.addColorStop(0,'#4557DD');
+      dg2.addColorStop(1,'#6C4DD8');
+      x.beginPath();
+      x.arc(nodeX,y,22,0,Math.PI*2);
+      x.fillStyle=dg2;
+      x.fill();
+      x.beginPath();
+      x.arc(nodeX,y,23.5,0,Math.PI*2);
+      x.strokeStyle='#F861EE';
+      x.lineWidth=2;
+      x.stroke();
+
+      // Node number
+      x.font='800 16px Inter,Arial,sans-serif';
+      x.fillStyle='white';
+      x.textAlign='center';
+      x.textBaseline='middle';
+      x.fillText(i+1, nodeX, y);
+
+      // Stage name + subtitle  ← boosted
+      x.textAlign='left';
+      x.textBaseline='alphabetic';
+      x.font='800 28px Inter,Arial,sans-serif';
+      x.fillStyle='white';
+      x.fillText(ST[i][0], nodeX+44, y+4);
+      x.font='400 20px Inter,Arial,sans-serif';
+      x.fillStyle='rgba(255,255,255,.65)';
+      x.fillText(ST[i][1], nodeX+44, y+30);
+
+    } else {
+      // Inactive node
+      x.beginPath();
+      x.arc(nodeX,y,16,0,Math.PI*2);
+      x.strokeStyle='rgba(255,255,255,.2)';
+      x.lineWidth=2;
+      x.stroke();
+
+      x.font='400 14px Inter,Arial,sans-serif';
+      x.fillStyle='rgba(255,255,255,.3)';
+      x.textAlign='center';
+      x.textBaseline='middle';
+      x.fillText(i+1, nodeX, y);
+
+      // Stage name + subtitle  ← boosted
+      x.textAlign='left';
+      x.textBaseline='alphabetic';
+      x.font='400 24px Inter,Arial,sans-serif';
+      x.fillStyle='rgba(255,255,255,.35)';
+      x.fillText(ST[i][0], nodeX+40, y+4);
+      x.font='400 18px Inter,Arial,sans-serif';
+      x.fillStyle='rgba(255,255,255,.22)';
+      x.fillText(ST[i][1], nodeX+40, y+28);
+    }
+  });
+
+  // ── Bottom CTA ───────────────────────────────────────────────
+  x.font='700 17px Inter,Arial,sans-serif';
+  x.fillStyle='rgba(255,255,255,.6)';
+  x.textAlign='left';
+  x.textBaseline='alphabetic';
+  x.fillText('SEE YOUR MATURITY STAGE AT', RM, 890);
+
+  const ug=x.createLinearGradient(RM, 920, RM+600, 920);
+  ug.addColorStop(0,'#4557DD');
+  ug.addColorStop(.5,'#F861EE');
+  ug.addColorStop(1,'#FF763C');
+  x.font='600 17px Inter,Arial,sans-serif';
+  x.fillStyle=ug;
+  x.fillText('GATLING.IO/PERFORMANCE-MATURITY-ANALYZER', RM, 918);
+}
+
+function downloadCard(){
+  buildShareCard();
+  const cv=document.getElementById('shareCard');
+  const a=document.createElement('a');
+  a.download='maturity-score.png';
+  a.href=cv.toDataURL('image/png');
+  a.click();
+}
 function updateLinkedInBtn() {
  const {total, stage} = computeScores();
  const text = 'My Gatling maturity score: ' + total + '/100 — ' + stage.label + '.\n\nFind out your team’s stage → ' + QUIZ_URL;
