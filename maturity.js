@@ -803,7 +803,7 @@ function buildShareCard(){
 
   // Bullet points  ← boosted
   sd.b.forEach((b,i)=>{
-    const y = 538 + i*52;
+    const y = 638 + i*52;
     x.beginPath();
     x.arc(LM+7, y-8, 5.5, 0, Math.PI*2);
     x.fillStyle='#4557DD';
