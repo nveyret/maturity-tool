@@ -485,7 +485,6 @@ nextBtn.disabled = !chosen;
 document.getElementById('btnBack').disabled = currentIdx === 0;
   // Scroll to the top of the active screen
 document.querySelector('.screen.active')
-  ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 updateProgress();
 }
 function selectAnswer(id) {
