@@ -1,3 +1,5 @@
+[![CodSpeed](https://img.shields.io/endpoint?url=https://codspeed.io/badge.json)](https://app.codspeed.io/nveyret/maturity-tool?utm_source=badge)
+
 ## Executive summary
 
 The Performance Maturity Analyzer is an interactive self-assessment tool embedded on Gatling.io. It asks engineering teams 18 targeted questions across six pillars: Process, Requirements, Environment, Automation, Metrics, and Culture and returns a score from 0 to 100 mapped to one of four TMMi-aligned maturity stages: Initial, Defined, Managed, and Optimized.
@@ -55,3 +57,14 @@ Once the gate form is submitted, the results show:
 - ISTQB Global Testing Survey — coverage and ownership
 - Google SRE Book — metrics and observability pillar
 - New Relic Observability Forecast 2023 — APM correlation data
+
+## Benchmarks
+
+Performance benchmarks for `maturity.js` live in `bench/` and run with [Vitest](https://vitest.dev) and [CodSpeed](https://codspeed.io). They load the script against the markup of `Code_Performance_Maturity_Assessment` in a simulated DOM (happy-dom) and measure score computation and screen rendering.
+
+```sh
+npm install
+npm run bench
+```
+
+Benchmarks run automatically in CI on every push to `main` and on pull requests.

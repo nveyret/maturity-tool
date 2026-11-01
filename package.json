@@ -1,0 +1,13 @@
+{
+  "name": "maturity-tool",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "bench": "vitest bench --run"
+  },
+  "devDependencies": {
+    "@codspeed/vitest-plugin": "^6.1.0",
+    "happy-dom": "^21.0.4",
+    "vitest": "^5.0.5"
+  }
+}
